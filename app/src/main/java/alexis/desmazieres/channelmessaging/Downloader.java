@@ -78,13 +78,17 @@ public class Downloader extends AsyncTask<Void, Void, String> implements OnDownl
         this.listDownload.add(listDownload);
     }
 
+    public ArrayList<OnDownloadCompleteListener> getListDownload() {
+        return listDownload;
+    }
+
     @Override
     protected String doInBackground(Void... params) {
 
         login = new LoginActivity();
 
         HashMap<String, String> postparams = new HashMap<>();
-        postparams.put("username", "alexdesm");
+        postparams.put("username", "adesm");
         postparams.put("password", "alexisdesmazieres");
         String response = performPostCall("http://www.raphaelbischof.fr/messaging/?function=connect", postparams);
         return response;
