@@ -2,6 +2,7 @@ package alexis.desmazieres.channelmessaging;
 
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -32,11 +33,13 @@ public class Downloader extends AsyncTask<Void, Void, String> implements OnDownl
     LoginActivity login;
     ChannelActivity channel;
 
-    public Downloader(LoginActivity login) {
+    public Downloader(LoginActivity login)
+    {
         this.login = login;
     }
 
-    public Downloader(ChannelActivity channel){
+    public Downloader(ChannelActivity channel)
+    {
         this.channel = channel;
     }
 
@@ -101,19 +104,20 @@ public class Downloader extends AsyncTask<Void, Void, String> implements OnDownl
 
         HashMap<String, String> postparams = new HashMap<>();
 
+        String response = null;
         if(this.login != null){
             postparams.put("username", login.getId());
             postparams.put("password", login.getPassword());
-            String response = performPostCall("http://www.raphaelbischof.fr/messaging/?function=connect", postparams);
-            return response;
+            response = performPostCall("http://www.raphaelbischof.fr/messaging/?function=connect", postparams);
         }
         //faire méthiode générique
-        /*else if(this.channel != null){
+        else if(this.channel != null){
+            SharedPreferences settings = channel.getSharedPreferences(Downloader.PREFS_NAME, 0);
             String accesstoken = settings.getString("accesstoken","default");
             postparams.put("accesstoken", accesstoken);
-            String response = performPostCall("http://www.raphaelbischof.fr/messaging/?function=getchannels", postparams);
-            return response;
-        }*/
+            response = performPostCall("http://www.raphaelbischof.fr/messaging/?function=getchannels", postparams);
+        }
+        return response;
     }
 
     @Override
