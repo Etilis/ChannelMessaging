@@ -34,8 +34,8 @@ public class ChannelActivity extends AppCompatActivity implements OnDownloadComp
 
 
         ListView listview = (ListView) this.findViewById(R.id.listView);
-        ArrayAdapter<TextView> tvs = new ArrayAdapter<TextView>(this, R.id.listView);
-        listview.setAdapter(tvs);
+        ArrayAdapterChannel tvs = new ArrayAdapterChannel(this.getApplicationContext(), channels);
+
 
         TextView tv;
 
@@ -45,6 +45,10 @@ public class ChannelActivity extends AppCompatActivity implements OnDownloadComp
             tv.setText(channel.name);
             tvs.add(tv);
         }
+
+
+        listview.setAdapter(tvs);
+
         listview.invalidate();
         /*
         for (Channel channel: channels.getChannels())

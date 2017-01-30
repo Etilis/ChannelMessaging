@@ -15,4 +15,11 @@ public class Channels {
     public ArrayList<Channel> getChannels() {
         return channels;
     }
+
+
+    public ArrayList<String> channelsArrayList(){
+        ArrayList<String> channelsListe = new ArrayList<String>();
+
+        return channelsListe;
+    }
 }
