@@ -32,15 +32,19 @@ public class Downloader extends AsyncTask<Void, Void, String> implements OnDownl
     ArrayList<OnDownloadCompleteListener> listDownload = new ArrayList<OnDownloadCompleteListener>();
     LoginActivity login;
     ChannelActivity channel;
+    private String url;
+    HashMap<String, String> postparams;
 
     public Downloader(LoginActivity login)
     {
         this.login = login;
     }
 
-    public Downloader(ChannelActivity channel)
+    public Downloader(ChannelActivity channelActivity, String url, HashMap<String, String> postparams)
     {
-        this.channel = channel;
+        this.channel = channelActivity;
+        this.url = url;
+        this.postparams = postparams;
     }
 
     public String performPostCall(String requestURL, HashMap<String, String> postDataParams) {
@@ -112,10 +116,7 @@ public class Downloader extends AsyncTask<Void, Void, String> implements OnDownl
         }
         //faire méthiode générique
         else if(this.channel != null){
-            SharedPreferences settings = channel.getSharedPreferences(Downloader.PREFS_NAME, 0);
-            String accesstoken = settings.getString("accesstoken","default");
-            postparams.put("accesstoken", accesstoken);
-            response = performPostCall("http://www.raphaelbischof.fr/messaging/?function=getchannels", postparams);
+
         }
         return response;
     }
