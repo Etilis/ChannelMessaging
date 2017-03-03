@@ -1,5 +1,6 @@
 package alexis.desmazieres.channelmessaging;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -39,13 +40,15 @@ public class ChannelActivity extends AppCompatActivity implements OnDownloadComp
 
     @Override
     public void onDownloadCompleted(String content) {
-        Gson gson = new Gson();
-        Channels channels = gson.fromJson(content, Channels.class);
-        ChannelList.setAdapter(new ArrayAdapterChannel(this.getApplicationContext(), listChannels.getChannels()));
+        /*Gson gson = new Gson();
+        listChannels = gson.fromJson(content, Channels.class);
+        ChannelList.setAdapter(new ArrayAdapterChannel(getApplicationContext(), listChannels.getChannels()));*/
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        /*Intent myIntent = new Intent(getApplicationContext(),ChannelActivity.class);
+        myIntent.putExtra("channelID", listChannels.getChannels().get(position).getchannelID());
+        startActivity(myIntent);*/
     }
 }

@@ -34,6 +34,7 @@ public class Downloader extends AsyncTask<Void, Void, String> implements OnDownl
     ChannelActivity channel;
     private String url;
     HashMap<String, String> postparams;
+    int ChannelID;
 
     public Downloader(LoginActivity login)
     {
@@ -46,6 +47,13 @@ public class Downloader extends AsyncTask<Void, Void, String> implements OnDownl
         this.url = url;
         this.postparams = postparams;
     }
+    public Downloader(String url, HashMap<String, String> postparams, int ChannelID)
+    {
+        this.ChannelID = ChannelID;
+        this.url = url;
+        this.postparams = postparams;
+    }
+
 
     public String performPostCall(String requestURL, HashMap<String, String> postDataParams) {
         URL url;
@@ -136,4 +144,7 @@ public class Downloader extends AsyncTask<Void, Void, String> implements OnDownl
     }
 
 
+    public void setDowlist(ChannelActivityList listDownload) {
+        this.channel = channel;
+    }
 }

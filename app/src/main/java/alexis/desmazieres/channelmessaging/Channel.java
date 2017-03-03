@@ -25,4 +25,8 @@ public class Channel {
     public String getName() {
         return name;
     }
+
+    public int getchannelID() {
+        return channelID;
+    }
 }

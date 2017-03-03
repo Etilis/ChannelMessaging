@@ -43,8 +43,8 @@ public class LoginActivity extends AppCompatActivity implements OnDownloadComple
 
 
 
-        EditText txtFieldId = (EditText) findViewById(R.id.txtId);
-        EditText txtFieldPassword = (EditText) findViewById(R.id.txtPassword);
+        EditText txtFieldId = (EditText) findViewById(R.id.etIdentifiant);
+        EditText txtFieldPassword = (EditText) findViewById(R.id.etPassword);
         id = txtFieldId.getText().toString();
         password = txtFieldPassword.getText().toString();
 
@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity implements OnDownloadComple
             }
         }else{
 
-            EditText txtFieldPassword = (EditText) findViewById(R.id.txtPassword);
+            EditText txtFieldPassword = (EditText) findViewById(R.id.etPassword);
             txtFieldPassword.setText("");
 
             Toast toast = Toast.makeText(getApplicationContext(), "Vous ne passerer pas !!!!!!!!!!!!! (informations incorrects)", Toast.LENGTH_LONG);
