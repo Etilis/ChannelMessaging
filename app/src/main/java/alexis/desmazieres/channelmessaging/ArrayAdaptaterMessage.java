@@ -5,25 +5,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by desmazia on 30/01/2017.
+ * Created by desmazia on 08/03/2017.
  */
-public class ArrayAdapterChannel extends ArrayAdapter<Channel> {
+public class ArrayAdaptaterMessage extends ArrayAdapter<Message> {
     private final Context context;
-    private List<Channel> listChannel;
+    private List<Message> listmessage;
     //private final Channel[] values;
 
-    public ArrayAdapterChannel(Context context, List<Channel> listChannel) {
-        super(context, R.layout.activity_channel, listChannel);
+    public ArrayAdaptaterMessage(Context context, List<Message> listMessage) {
+        super(context, R.layout.activity_message, listMessage);
         this.context = context;
-        this.listChannel = listChannel;
+        this.listmessage = listmessage;
     }
 
     @Override
@@ -32,8 +29,7 @@ public class ArrayAdapterChannel extends ArrayAdapter<Channel> {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.activity_channel, parent, false);
         TextView textView = (TextView) rowView.findViewById(R.id.lblTitre);
-        textView.setText(this.getItem(position).getName());
+        textView.setText(this.getItem(position).getMessage());
         return rowView;
     }
-
 }

@@ -15,6 +15,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -32,6 +33,7 @@ public class Downloader extends AsyncTask<Void, Void, String> implements OnDownl
     ArrayList<OnDownloadCompleteListener> listDownload = new ArrayList<OnDownloadCompleteListener>();
     LoginActivity login;
     ChannelActivity channel;
+    ChannelMessage messages;
     private String url;
     HashMap<String, String> postparams;
     int ChannelID;
@@ -44,6 +46,12 @@ public class Downloader extends AsyncTask<Void, Void, String> implements OnDownl
     public Downloader(ChannelActivity channelActivity, String url, HashMap<String, String> postparams)
     {
         this.channel = channelActivity;
+        this.url = url;
+        this.postparams = postparams;
+    }
+    public Downloader(ChannelMessage messages, String url, HashMap<String, String> postparams)
+    {
+        this.messages = messages;
         this.url = url;
         this.postparams = postparams;
     }
@@ -114,17 +122,16 @@ public class Downloader extends AsyncTask<Void, Void, String> implements OnDownl
     @Override
     protected String doInBackground(Void... params) {
 
-        HashMap<String, String> postparams = new HashMap<>();
-
         String response = null;
         if(this.login != null){
+            HashMap<String, String> postparams = new HashMap<>();
             postparams.put("username", login.getId());
             postparams.put("password", login.getPassword());
             response = performPostCall("http://www.raphaelbischof.fr/messaging/?function=connect", postparams);
         }
-        //faire méthiode générique
-        else if(this.channel != null){
-
+        //faire méthode générique
+        else{
+            response = performPostCall(url, this.postparams);
         }
         return response;
     }
@@ -144,7 +151,7 @@ public class Downloader extends AsyncTask<Void, Void, String> implements OnDownl
     }
 
 
-    public void setDowlist(ChannelActivityList listDownload) {
+    public void setDowlist(ChannelActivity listDownload) {
         this.channel = channel;
     }
 }

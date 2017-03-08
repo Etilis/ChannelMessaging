@@ -22,6 +22,7 @@ public class ChannelActivity extends AppCompatActivity implements OnDownloadComp
     private ListView ChannelList;
     private HashMap<String, String> postparams = new HashMap<>();
     private Channels listChannels;
+    String url = "http://www.raphaelbischof.fr/messaging/?function=getchannels";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,6 @@ public class ChannelActivity extends AppCompatActivity implements OnDownloadComp
         SharedPreferences settings = getSharedPreferences(Downloader.PREFS_NAME, 0);
         String accesstoken = settings.getString("accesstoken", "");
         postparams.put("accesstoken", accesstoken);
-        String url = "http://www.raphaelbischof.fr/messaging/?function=getchannels";
         Downloader d = new Downloader(this, url, postparams);
         d.setListDownload(this);
         d.execute();
@@ -40,15 +40,15 @@ public class ChannelActivity extends AppCompatActivity implements OnDownloadComp
 
     @Override
     public void onDownloadCompleted(String content) {
-        /*Gson gson = new Gson();
+        Gson gson = new Gson();
         listChannels = gson.fromJson(content, Channels.class);
-        ChannelList.setAdapter(new ArrayAdapterChannel(getApplicationContext(), listChannels.getChannels()));*/
+        ChannelList.setAdapter(new ArrayAdapterChannel(getApplicationContext(), listChannels.getChannels()));
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        /*Intent myIntent = new Intent(getApplicationContext(),ChannelActivity.class);
+        Intent myIntent = new Intent(getApplicationContext(), ChannelMessage.class);
         myIntent.putExtra("channelID", listChannels.getChannels().get(position).getchannelID());
-        startActivity(myIntent);*/
+        startActivity(myIntent);
     }
 }
