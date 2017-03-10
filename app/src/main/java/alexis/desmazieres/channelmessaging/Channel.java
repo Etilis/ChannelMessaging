@@ -29,4 +29,13 @@ public class Channel {
     public int getchannelID() {
         return channelID;
     }
+
+    @Override
+    public String toString() {
+        return "Channel{" +
+                "channelID=" + channelID +
+                ", name='" + name + '\'' +
+                ", connectedusers=" + connectedusers +
+                '}';
+    }
 }

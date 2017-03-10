@@ -10,12 +10,22 @@
 
     <style name="TextLabel" parent="TextAppearance.AppCompat">
         <!-- Hint color et label color si pas de focus -->
-        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textColorHint">@color/black</item>
         <item name="android:textSize">20sp</item>
         <!-- bar color -->
         <item name="colorControlNormal">@color/white</item>
         <!-- Label color si focus -->
         <item name="colorControlActivated">@color/black</item>
+    </style>
+
+    <style name="TextLabel2" parent="TextAppearance.AppCompat">
+        <!-- Hint color et label color si pas de focus -->
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textSize">20sp</item>
+        <!-- bar color -->
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <!-- Label color si focus -->
+        <item name="colorControlActivated">@color/white</item>
     </style>
 
 </resources>
