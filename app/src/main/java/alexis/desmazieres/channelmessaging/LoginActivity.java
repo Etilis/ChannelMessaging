@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity implements OnDownloadComple
         mHandlerTada.postDelayed(new Runnable(){
             public void run(){
                 // Your code here
-                YoYo.AnimationComposer
+                //YoYo.AnimationComposer
                 mHandlerTada.postDelayed(this, mShortDelay);
             }
         }, mShortDelay);

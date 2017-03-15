@@ -20,6 +20,7 @@ public class ChannelMessage extends AppCompatActivity implements OnDownloadCompl
     private HashMap<String, String> postparams = new HashMap<>();
     private String url = "http://www.raphaelbischof.fr/messaging/?function=getmessages";
     private Messages listMessages;
+    private int channelID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +28,12 @@ public class ChannelMessage extends AppCompatActivity implements OnDownloadCompl
         setContentView(R.layout.activity_message);
         //ChannelList = (ListView) findViewById(R.id.lvChannels);
         title = (TextView) findViewById(R.id.txtTitleChannel);
-        messages = (ListView) findViewById(R.id.listViewMessages);SharedPreferences settings = getSharedPreferences(Downloader.PREFS_NAME, 0);
+        messages = (ListView) findViewById(R.id.listViewMessages);
+        SharedPreferences settings = getSharedPreferences(Downloader.PREFS_NAME, 0);
         String accesstoken = settings.getString("accesstoken", "");
         postparams.put("accesstoken", accesstoken);
-        postparams.put("channelid", "");
+        channelID = getIntent().getIntExtra("channelID", 0);
+        postparams.put("channelid", Integer.toString(channelID));
         Downloader d = new Downloader(this, url, postparams);
         d.setListDownload(this);
         d.execute();
@@ -40,6 +43,6 @@ public class ChannelMessage extends AppCompatActivity implements OnDownloadCompl
     public void onDownloadCompleted(String content) {
         Gson gson = new Gson();
         listMessages = gson.fromJson(content, Messages.class);
-        messages.setAdapter(new ArrayAdaptaterMessage(getApplicationContext(), listMessages.getMessages()));
+        messages.setAdapter(new ArrayAdaptaterMessage(ChannelMessage.this, listMessages.getMessages()));
     }
 }

@@ -27,9 +27,11 @@ public class ArrayAdaptaterMessage extends ArrayAdapter<Message> {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.activity_channel, parent, false);
-        TextView textView = (TextView) rowView.findViewById(R.id.lblTitre);
-        textView.setText(this.getItem(position).getMessage());
+        View rowView = inflater.inflate(R.layout.adaptater_message, parent, false);
+        TextView textView = (TextView) rowView.findViewById(R.id.tvNom);
+        TextView textView2 = (TextView) rowView.findViewById(R.id.tvMessage);
+        textView.setText(listmessage.get(position).getUtilisateur());
+        textView2.setText(listmessage.get(position).getMessage());
         return rowView;
     }
 }

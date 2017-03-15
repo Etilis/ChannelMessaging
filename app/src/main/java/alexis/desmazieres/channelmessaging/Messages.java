@@ -6,6 +6,10 @@ import java.util.ArrayList;
  * Created by desmazia on 08/03/2017.
  */
 public class Messages {
+    public void setMessages(ArrayList<Message> messages) {
+        this.messages = messages;
+    }
+
     ArrayList<Message> messages;
 
     public Messages(ArrayList<Message> messages) {
