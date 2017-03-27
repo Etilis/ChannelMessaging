@@ -20,7 +20,7 @@ public class ArrayAdaptaterMessage extends ArrayAdapter<Message> {
     public ArrayAdaptaterMessage(Context context, List<Message> listMessage) {
         super(context, R.layout.activity_message, listMessage);
         this.context = context;
-        this.listmessage = listmessage;
+        this.listmessage = listMessage;
     }
 
     @Override

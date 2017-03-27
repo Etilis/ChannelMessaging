@@ -5,15 +5,18 @@ package alexis.desmazieres.channelmessaging;
  */
 public class Message {
     private String message;
-    private String utilisateur;
+    private String username;
     private String date;
 
     public String getUtilisateur() {
-        return utilisateur;
+        return getUsername();
     }
 
-    public void setUtilisateur(String utilisateur) {
-        this.utilisateur = utilisateur;
+    public void setUtilisateur(String utilisateur){ setUsername(utilisateur);    }
+
+    public String getUsername(){return username;}
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getDate() {

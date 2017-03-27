@@ -13,7 +13,19 @@
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="436dp"
-        android:id="@+id/listViewMessages"
-        android:layout_weight="0.67" />
+        android:layout_height="375dp"
+        android:id="@+id/listViewMessages" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtMessage" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="197dp"
+        android:layout_height="wrap_content"
+        android:text="envoyer"
+        android:id="@+id/btnEnvoyer" />
+
 </LinearLayout>
